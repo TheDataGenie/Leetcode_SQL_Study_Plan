@@ -53,6 +53,7 @@ FROM        views v
 
 INNER JOIN  views s
 ON          v.author_id = s.viewer_id
+AND         v.article_id = s.article_id
 
 ORDER BY    v.author_id ASC
 ;
