@@ -46,7 +46,7 @@
 -- Note that if the number of students is odd, there is no need to change the last one's seat.
 
 
--- Solution
+-- Solution: 1
 
 SELECT      CASE WHEN MOD(id, 2) != 0 AND counts != id THEN id + 1
                  WHEN MOD(id, 2) != 0 AND counts = id THEN id
@@ -64,3 +64,17 @@ FROM        seat
 
 ORDER BY    id ASC
 ;
+
+
+
+-- Solution: 2
+
+SELECT      CASE WHEN id%2 <> 0 AND (SELECT COUNT(*) FROM seat) <> id THEN id + 1
+                 WHEN id%2 <> 0 AND (SELECT COUNT(*) FROM seat) = id THEN id
+                 ELSE id - 1
+            END AS id
+        ,   student
+
+FROM        seat
+
+ORDER BY    id
