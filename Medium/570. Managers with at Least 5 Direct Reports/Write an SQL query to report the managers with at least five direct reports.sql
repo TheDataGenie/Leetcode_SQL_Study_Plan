@@ -43,7 +43,7 @@
 -- | John |
 -- +------+
 
--- Solution
+-- Solution: 1
 
 SELECT      e.name
 
@@ -53,6 +53,19 @@ INNER JOIN  Employee em
 ON          e.id = em.managerid
 
 GROUP BY    e.name
+
+HAVING      COUNT(*) >= 5
+;
+
+-- Solution: 2
+
+SELECT      e1.name
+
+FROM        employee e1, employee e2
+
+WHERE       e1.id = e2.managerid
+
+GROUP BY    e1.name
 
 HAVING      COUNT(*) >= 5
 ;
